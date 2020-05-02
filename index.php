@@ -4,8 +4,10 @@
 
     <main>
 
-        
+        <p>Logged in</p>
 
+        <p>Logged out</p>
+        
     </main>
 
 <?php
