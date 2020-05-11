@@ -1,4 +1,7 @@
-<!DOCTYPE>
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
 <html>
 
     <head>
@@ -23,16 +26,13 @@
                 background-color: #111;
             }
 
-            li {
-                float: right;
+            .menubar {
+                float: left;
+                text-decoration: none;
+                margin-left: 10px;
             }
 
-            li a:hover {
-                padding: 14px 16px;
-                background-color: #000;
-            }
-
-            li a {
+            .menubar a {
                 display: block;
                 color: white;
                 text-align: center;
@@ -40,8 +40,29 @@
                 text-decoration: none;
             }
 
-            .pad{
+            .menubar a:hover {
                 padding: 14px 16px;
+                background-color: #000;
+            }
+
+            .headerlogo{
+                float: left;
+                max-height: 42px;
+                width: auto;
+                background-color: white;
+                margin: 2px;
+            }
+
+            .signup{
+                background-color:white;
+                text-decoration: none;
+                padding: 3px;
+            }
+
+            .loginform{
+                float: right;
+                margin-right: 10px;
+                margin-top: 15px;
             }
 
         </style>
@@ -54,47 +75,47 @@
 
                 <ul>
 
-                    <li style="float:left; padding: 2px 4px">
+                    <li>
                     
                         <a href="#">
 
-                            <img style="max-width:42px; height:auto; background-color: white;" src="img/logo.png" alt="Logo" />
+                            <img src="img/logo.png" alt="Logo" class="headerlogo" />
 
                         </a>
                     
                     </li>
 
-                    <li class="pad"><a href="index.php">Home</a></>
+                    <li class="menubar"><a href="#">Privacidade</a></li>
 
-                    <li class="pad"><a href="#">Sobre mim</a></li>
+                    <li class="menubar"><a href="#">Sobre mim</a></li>
 
-                    <li class="pad"><a href="#">Contacto</a></li>
+                    <li class="menubar"><a href="#">Contacto</a></li>
 
-                    <li class="pad"><a href="#">Privacidade</a></li>
+                    <li class="menubar"><a href="index.php">Home</a></li>
+
+                    <li><?php
+                        if(isset($_SESSION['userid'])){
+                            echo '<form action="includes/logout.inc.php" method="post" class="loginform">
+
+                                    <button type="submit" name="logout-submit">Logout</button>
+    
+                                </form>';
+                        }else{
+                            echo '
+                                <form action="includes/login.inc.php" method="post" class="loginform">
+
+                                <input type="text" name="UserName" placeholder="Nome de utilizador"/>
+        
+                                <input type="password" name="password" placeholder="Introduzir a password"/>
+        
+                                <button type="submit" name="login-submit">Login</button>
+        
+                                <a href="signup.php" class="signup">Signup</a>
+                                </form>';
+                        }
+                    ?></li>
 
                 </ul>
-
-                <div>
-
-                    <form action="includes/login.inc.php" method="post">
-
-                        <input type="text" name="UserName" placeholder="Introduzir o nome de utilizador"/>
-
-                        <input type="password" name="password" placeholder="Introduzir a password"/>
-
-                        <button type="submit" name="login-submit">Login</button>
-
-                    </form>
-
-                    <a href="signup.php">Signup</a>
-
-                    <form action="includes/logout.inc.php" method="post">
-
-                        <button type="submit" name="logout-submit">Logout</button>
-
-                    </form>
-
-                </div>
 
             </nav>
 

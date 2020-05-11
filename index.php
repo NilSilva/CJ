@@ -3,10 +3,13 @@
 ?>
 
     <main>
-
-        <p>Logged in</p>
-
-        <p>Logged out</p>
+        <?php
+            if(isset($_SESSION['userid'])){
+                echo "<p>Logged in</p>";
+            }else{
+                echo "<p>Logged out</p>";
+            }
+        ?>
         
     </main>
 
