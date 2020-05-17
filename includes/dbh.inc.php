@@ -7,6 +7,6 @@ $dBName = "cjbd";
 
 $conn = mysqli_connect($serverName, $dBUser, $dBPwd, $dBName);
 
-if(!conn){
+if(!$conn){
     die("Connection failed: ".mysqli_connect_error());
 }
